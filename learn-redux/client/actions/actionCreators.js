@@ -1,4 +1,5 @@
 export function increment(index) {
+  console.log('running increment')
   return {
     type: 'INCREMENT_LIKES',
     index
@@ -6,6 +7,7 @@ export function increment(index) {
 }
 
 export function addComment(postId, author, comment) {
+  console.log('adding comment')
   return {
     type: 'ADD_COMMENT',
     postId,
