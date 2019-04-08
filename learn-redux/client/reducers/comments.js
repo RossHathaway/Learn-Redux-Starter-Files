@@ -11,7 +11,7 @@ function comments(state = {}, action) {
 function postComments(action, commentList) {
   switch (action.type) {
     case 'ADD_COMMENT':
-      return [...commentList, {user:action.author, comment: action.post}]
+      return [...commentList, {user:action.author, text: action.comment}]
     case 'REMOVE_COMMENT':
       return [...commentList.slice(0, action.i),
         ...commentList.slice(action.i + 1)]

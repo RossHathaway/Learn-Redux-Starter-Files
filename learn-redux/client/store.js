@@ -8,8 +8,20 @@ import comments from './data/comments'
 import posts from './data/posts'
 
 const defaultState = {posts, comments}
-const store = createStore(rootReducer, defaultState)
+
+// const enhancers = compose(
+//   window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (store) => store
+// )
+
+const store = createStore(rootReducer, defaultState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 export const history = syncHistoryWithStore(browserHistory, store)
+
+if (module.hot) {
+  module.hot.accept('./reducers/', () => {
+    const newReducer = require('./reducers/index.js').default
+    store.replaceReducer(newReducer)
+  })
+}
 
 export default store

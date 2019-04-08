@@ -4,7 +4,7 @@ function posts(state = [], action) {
     case 'INCREMENT_LIKES':
       return state.map((post, i) => {
         if (i === action.index) {
-          return {...post, likes: post.likes + 1}
+          return {...post, likes: post.likes + 10}
         } else {
           return post
         }
